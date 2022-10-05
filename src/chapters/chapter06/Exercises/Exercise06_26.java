@@ -1,6 +1,6 @@
 package chapters.chapter06.Exercises;
 
-public class Exercise06_25 {
+public class Exercise06_26 {
     public static void main(String[] args) {
         int count = 0;
         for (int i = 2; count < 100; i++) {
