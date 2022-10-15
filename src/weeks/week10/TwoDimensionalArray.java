@@ -10,7 +10,7 @@ public class TwoDimensionalArray {
         System.out.println("Enter the column for the array:");
         int column = input.nextInt();
         int[][] arr = new int[row][column];
-        fill2DArrWithRandomValues(arr,0,100);
+        fill2DArrWithRandomValues(arr, 0, 100);
         printArr(arr);
     }
 
@@ -24,10 +24,10 @@ public class TwoDimensionalArray {
         }
     }
 
-    public static void fill2DArrWithRandomValues(int[][]arr,int start, int limit){
+    public static void fill2DArrWithRandomValues(int[][] arr, int start, int limit) {
         for (int i = 0; i < arr.length; i++) {
             for (int j = 0; j < arr[i].length; j++) {
-                arr[i][j] = (int)(start +(Math.random() * (limit - start)));
+                arr[i][j] = (int) (start + (Math.random() * (limit - start)));
             }
         }
     }
