@@ -22,7 +22,7 @@ public class Listing08_02 {
                 }
 
             }
-            System.out.println("Student " + i + "'s correct count is " + correctCount);
+            System.out.println("Student " + (i + 1) + "'s correct count is " + correctCount);
         }
     }
 }
