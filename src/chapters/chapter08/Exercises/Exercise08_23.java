@@ -55,12 +55,13 @@ public class Exercise08_23 {
 
     public static void fillTheArr(int[][] m) {
         Scanner input = new Scanner(System.in);
-        System.out.println("Fill the array 0s and 1s ");
+        System.out.println("Fill the 6-by-6 array 0s and 1s ");
         for (int i = 0; i < m.length; i++) {
             for (int j = 0; j < m[i].length; j++) {
                 int number = input.nextInt();
                 while (number != 0 && number != 1) {
                     System.out.println("Please try again. Should enter only 0 or 1");
+                    number = input.nextInt();
                 }
                 m[i][j] = number;
 
