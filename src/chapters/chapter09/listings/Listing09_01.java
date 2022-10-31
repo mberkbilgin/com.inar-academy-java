@@ -16,8 +16,7 @@ public class Listing09_01 {
     }
 }
 
-class SimpleCircle {
-    double radius;
+class SimpleCircle {double radius;
 
     SimpleCircle() {
         radius = 1;
@@ -38,6 +37,7 @@ class SimpleCircle {
     void SetRadius(double newRadius) {
         radius = newRadius;
     }
+
 }
 
 
