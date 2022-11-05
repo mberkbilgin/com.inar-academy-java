@@ -1,4 +1,4 @@
-package chapters.chapter07.Checkpoints;
+package chapters.chapter07.checkpoints;
 
 import java.util.Arrays;
 

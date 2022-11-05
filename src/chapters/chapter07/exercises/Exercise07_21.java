@@ -1,6 +1,5 @@
-package chapters.chapter07.Exercises;
+package chapters.chapter07.exercises;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Exercise07_21 {

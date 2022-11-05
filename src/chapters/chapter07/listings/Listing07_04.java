@@ -1,6 +1,4 @@
-package chapters.chapter07.Listings;
-
-import java.util.Arrays;
+package chapters.chapter07.listings;
 
 import static chapters.chapter06.Listings.Listing06_10.getRandomLowerCharacter;
 

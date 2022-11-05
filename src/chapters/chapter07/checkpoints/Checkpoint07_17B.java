@@ -1,6 +1,4 @@
-package chapters.chapter07.Checkpoints;
-
-import java.util.Arrays;
+package chapters.chapter07.checkpoints;
 
 public class Checkpoint07_17B {
     public static void main(String[] args) {

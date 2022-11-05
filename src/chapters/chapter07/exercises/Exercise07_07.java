@@ -1,6 +1,4 @@
-package chapters.chapter07.Exercises;
-
-import java.util.Arrays;
+package chapters.chapter07.exercises;
 
 public class Exercise07_07 {
     public static void main(String[] args) {
