@@ -1,4 +1,4 @@
-package chapters.chapter05.Listings;
+package chapters.chapter05.listings;
 
 import java.util.Scanner;
 
