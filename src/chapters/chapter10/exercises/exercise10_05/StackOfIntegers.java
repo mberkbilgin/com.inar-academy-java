@@ -1,35 +1,38 @@
 package chapters.chapter10.exercises.exercise10_05;
 
 public class StackOfIntegers {
-    private int number;
-    private String factor;
+    private int[] elements;
+    private int size;
+    public static final int DEFAULT_CAPACITY = 16;
 
-    public StackOfIntegers(int number) {
-        this.number = number;
-        this.factor = "";
+    public StackOfIntegers() {
+        this(DEFAULT_CAPACITY);
     }
 
-    public int getNumber() {
-        return number;
+    public StackOfIntegers(int capacity) {
+        elements = new int[capacity];
     }
-
-    public void setNumber(int number) {
-        this.number = number;
-    }
-
-    public String reverseFactor() {
-        int i = 2;
-        while (getNumber() != 1) {
-            if (getNumber() % i == 0) {
-                while (getNumber() % i == 0) {
-                    factor += i + ",";
-                    setNumber(getNumber() / i);
-                }
-            } else {
-                i++;
-            }
+    public void push(int value) {
+        if(size >= elements.length){
+            int[] temp = new int[elements.length * 2];
+            System.arraycopy(elements,0,temp,0,elements.length);
+            elements = temp;
         }
-        return factor;
+
+        elements[size++] = value;
     }
 
+    public int pop() {
+        return elements[--size];
+    }
+    public int peek(){
+        return elements[size - 1];
+    }
+    public boolean empty(){
+        return size == 0;
+    }
+
+    public int getSize() {
+        return size;
+    }
 }
