@@ -15,7 +15,10 @@ public class Exercise10_19 {
         for (int i = 0; i < numbers.length; i++) {
             BigInteger number = new BigInteger(numbers[i] + "");
             number = (constant.pow(number.intValue())).add(new BigInteger("-1"));
-            System.out.println(number.toString());
+            if(number.isProbablePrime(1)){
+                System.out.println(number.toString());
+            }
+
         }
     }
 
