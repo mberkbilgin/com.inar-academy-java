@@ -37,7 +37,7 @@ public class MyString2 {
 
     public MyString2 toUpperCase() {
         for (int i = 0; i < chars.length; i++) {
-            if ('a' < chars[i] || chars[i] < 'z') {
+            if ('a' <= chars[i] || chars[i] <= 'z') {
                 chars[i] = (char) (chars[i] + 32);
             }
         }
