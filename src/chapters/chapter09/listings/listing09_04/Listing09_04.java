@@ -1,4 +1,6 @@
-package chapters.chapter09.listings;
+package chapters.chapter09.listings.listing09_04;
+
+import chapters.chapter09.listings.listing09_03.Listing09_03_TV;
 
 public class Listing09_04 {
     public static void main(String[] args) {

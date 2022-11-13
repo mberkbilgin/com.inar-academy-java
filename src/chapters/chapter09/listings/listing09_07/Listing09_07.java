@@ -1,4 +1,6 @@
-package chapters.chapter09.listings;
+package chapters.chapter09.listings.listing09_07;
+
+import chapters.chapter09.listings.listing09_06.Listing09_06_CircleWithStaticMembers;
 
 public class Listing09_07 {
     public static void main(String[] args) {

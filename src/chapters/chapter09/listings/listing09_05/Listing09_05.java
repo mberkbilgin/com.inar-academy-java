@@ -1,4 +1,4 @@
-package chapters.chapter09.listings;
+package chapters.chapter09.listings.listing09_05;
 
 import java.awt.geom.Point2D;
 import java.util.Scanner;

@@ -1,15 +1,15 @@
-package chapters.chapter09.listings;
+package chapters.chapter09.listings.listing09_06;
 
 public class Listing09_06_CircleWithStaticMembers {
-    double radius;
+    public double radius;
 
-    static int numberOfObjects = 0;
+    public static int numberOfObjects = 0;
 
-    Listing09_06_CircleWithStaticMembers(){
+    public Listing09_06_CircleWithStaticMembers(){
         radius = 1;
         numberOfObjects++;
     }
-    Listing09_06_CircleWithStaticMembers(double newRadius){
+    public Listing09_06_CircleWithStaticMembers(double newRadius){
         radius = newRadius;
         numberOfObjects++;
     }

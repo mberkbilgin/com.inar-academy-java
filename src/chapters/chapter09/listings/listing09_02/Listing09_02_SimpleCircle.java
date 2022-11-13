@@ -1,4 +1,4 @@
-package chapters.chapter09.listings;
+package chapters.chapter09.listings.listing09_02;
 
 public class Listing09_02_SimpleCircle {
     public static void main(String[] args) {
