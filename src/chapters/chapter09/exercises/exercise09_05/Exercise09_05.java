@@ -1,4 +1,4 @@
-package chapters.chapter09.exercises;
+package chapters.chapter09.exercises.exercise09_05;
 
 import java.util.GregorianCalendar;
 

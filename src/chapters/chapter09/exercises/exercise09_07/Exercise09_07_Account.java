@@ -1,4 +1,4 @@
-package chapters.chapter09.exercises;
+package chapters.chapter09.exercises.exercise09_07;
 
 import java.util.Date;
 
@@ -6,7 +6,7 @@ public class Exercise09_07_Account {
     private int id;
     private double balance;
     private double annualInterestRate;
-    private Date dateCreated;
+    Date dateCreated;
 
     Exercise09_07_Account(){
         this.id = 0;
@@ -58,12 +58,5 @@ public class Exercise09_07_Account {
         setBalance(getBalance() + deposit);
     }
 
-    public static void main(String[] args) {
-        Exercise09_07_Account account = new Exercise09_07_Account(1122,20_000);
-        account.setAnnualInterestRate(4.5);
-        account.withdraw(2500);
-        account.deposit(3000);
-        System.out.println("Account id " + account.getId());
-        System.out.println("The balance of account is " + account.getBalance() + "\nThe monthly interest rate is %" + account.getMonthlyInterestRate() + "\nThe date is " + account.dateCreated);
-    }
+
 }
