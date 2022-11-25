@@ -32,7 +32,7 @@ public class Exercise12_01B {
                 break;
         }
         System.out.println(n1 + " " + args[1] + " " + n2 + "=" + result);
-     
+
     }
 
     public static boolean isNumber(String arg) {

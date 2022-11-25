@@ -2,17 +2,17 @@ package chapters.chapter12.exercises.exercise12_04;
 
 import java.util.Date;
 
-public class Exercise12_04 {
+public class Loan {
     private double annualInterestRate;
     private int numberOfYears;
     private double loanAmount;
     private java.util.Date loanDate;
 
-    public Exercise12_04() {
+    public Loan() {
         this(2.5, 1, 1000);
     }
 
-    public Exercise12_04(double annualInterestRate, int numberOfYears, double loanAmount) {
+    public Loan(double annualInterestRate, int numberOfYears, double loanAmount) {
         if (loanAmount <= 0 || annualInterestRate <= 0 || numberOfYears <= 0) {
             throw new IllegalArgumentException("Checkout your values, they must be higher than zero ");
         }
