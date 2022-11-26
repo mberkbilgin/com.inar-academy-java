@@ -13,23 +13,24 @@ public class Exercise12_11 {
 
         }
         File file = new File(args[1]);
+        String line = "";
+        StringBuilder sb = new StringBuilder();
         if (!file.exists()) {
             System.out.println("File " + file + " doesn't exist");
             System.exit(1);
         }
-        String str = "";
         try (
                 Scanner input = new Scanner(file);
         ) {
             while (input.hasNext()) {
-                String line = input.nextLine();
-                str += line.replace(args[0], "") + "\n";
+                line = input.nextLine();
+                sb.append(line.replaceAll(args[0], "") + "\n");
             }
         }
         try (
                 PrintWriter output = new PrintWriter(file);
         ) {
-            output.print(str);
+            output.print(sb);
         }
     }
 }
