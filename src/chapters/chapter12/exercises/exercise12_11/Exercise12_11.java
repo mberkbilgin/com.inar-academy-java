@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class Exercise12_11 {
     public static void main(String[] args) throws FileNotFoundException {
         if (args.length != 2) {
-            System.out.println("Usage: java Exercise12_11 filename word");
+            System.out.println("Usage: java Exercise12_11 StringThatWillRemoved fileName");
             System.exit(0);
 
         }
