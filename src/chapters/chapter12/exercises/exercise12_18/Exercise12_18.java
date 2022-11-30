@@ -8,54 +8,61 @@ import java.util.Scanner;
 
 public class Exercise12_18 {
     public static void main(String[] args) throws FileNotFoundException {
-        if(args.length != 1){
+        if (args.length != 1) {
             System.out.println("Usage: java Exercise12_28 fileName");
             System.exit(0);
         }
-        File directory = new File(args[0]);
-        if (!directory.exists()) {
-            System.out.println("File " + directory.getName() + " doesn't exist");
+        File mainDirectory = new File(args[0]);
+        if (!mainDirectory.exists()) {
+            System.out.println("File " + mainDirectory.getName() + " doesn't exist");
             System.exit(1);
         }
-        if (!directory.isDirectory()) {
-            System.out.println(directory.getName() + " is not a directory!");
+        if (!mainDirectory.isDirectory()) {
+            System.out.println(mainDirectory.getName() + " is not a directory!");
             System.exit(2);
         }
+        File[] mainFiles = mainDirectory.listFiles();
+        if (mainFiles == null) {
+            System.out.println(mainFiles + " is empty");
+            System.exit(3);
+        }
         ArrayList<File> directories = new ArrayList<>();
-        directories.add(directory);
-        File file = directories.remove(0);
-        if (file.isDirectory()) {
-            File[] files = file.listFiles();
-
-            for (int i = 0; i < files.length; i++) {
-                if (files[i].isDirectory()) {
-                    directories.add(files[i]);
-                }
-                if (files[i].isFile() && files[i].getName().endsWith(".java")) {
-                        fillWithPackage(files[i]);
-                }
+        for (int i = 0; i < mainFiles.length; i++) {
+            if (mainFiles[i].isDirectory() && mainFiles[i].getName().contains("chapter")) {
+                directories.add(mainFiles[i]);
             }
         }
-    }
-
-    private static void fillWithPackage(File file) throws FileNotFoundException {
-        String[] s1 = file.getParent().split("\\\\");
-        String s = "";
-        try (
-                Scanner input = new Scanner(file)
-
+        if (directories.isEmpty()) {
+            System.out.println("There is no directory in " + mainDirectory);
+            System.exit(4);
+        }
+        for (File i :
+                directories
         ) {
-            while (input.hasNext()) {
-                s += "\n" + input.nextLine();
-            }
-
-            try (
-                    PrintWriter output = new PrintWriter(file)
-            ) {
-
-                s ="package " +  s1[s1.length - 1] + ";\n" + s;
-                output.println(s);
+            File[] files = i.listFiles();
+            for (int j = 0; j < files.length; j++) {
+                if (files[j].isFile() && files[j].getName().contains(".java")) {
+                    writePackage(files[j]);
+                }
             }
         }
+
     }
+
+    private static void writePackage(File file) throws FileNotFoundException {
+        try (Scanner input = new Scanner(file);) {
+            String firstLine = "package " + file.getParent() + "." + file.getName();
+            String str = "";
+            while (input.hasNext()) {
+                str += "\n" + input.nextLine();
+            }
+            PrintWriter output = new PrintWriter(file);
+            output.print(firstLine);
+            output.println(str);
+            output.close();
+
+        }
+    }
+
+
 }
