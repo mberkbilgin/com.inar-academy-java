@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class Exercise12_23 {
     public static void main(String[] args) throws FileNotFoundException {
         if (args.length != 1) {
-            System.out.println("Usage: java Exercise12_20 fileName");
+            System.out.println("Usage: java Exercise12_23 fileName");
             System.exit(0);
         }
         File file = new File(args[0]);
