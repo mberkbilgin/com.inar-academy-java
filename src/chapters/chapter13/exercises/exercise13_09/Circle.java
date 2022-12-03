@@ -1,6 +1,6 @@
-package chapters.chapter13.exercises.exercise13_06;
+package chapters.chapter13.exercises.exercise13_09;
 
-public class Circle extends GeometricObject{
+public class Circle extends GeometricObject implements Comparable {
     private double radius;
 
     public double getRadius() {
@@ -38,7 +38,19 @@ public class Circle extends GeometricObject{
         return 2 * Math.PI * radius;
     }
 
-    public int compareTo(GeometricObject o) {
-        return max(o);
+    @Override
+    public boolean equals(Object object) {
+        Circle circle = (Circle) object;
+        if (this.radius == ((Circle) object).radius) {
+            return true;
+        }
+        return false;
+    }
+
+
+    @Override
+    public int compareTo(Object o) {
+        return max((GeometricObject) o);
     }
 }
+
