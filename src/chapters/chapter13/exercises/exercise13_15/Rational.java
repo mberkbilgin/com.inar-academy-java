@@ -2,76 +2,82 @@ package chapters.chapter13.exercises.exercise13_15;
 
 import java.math.BigInteger;
 
-public class Rational extends Number implements Comparable<Rational>{
-    private BigInteger numerator = BigInteger.ZERO;
-    private BigInteger denominator = BigInteger.ONE;
+public class Rational extends Number implements Comparable<Rational> {
+    private BigInteger[] r = new BigInteger[2];
 
     public Rational() {
-        this(0, 1);
+        this(BigInteger.ZERO, BigInteger.ONE);
     }
 
-    public Rational(long numerator, long denominator) {
-        long gcd = gcd(numerator, denominator);
-        this.numerator = BigInteger.valueOf(((denominator > 0) ? 1 : -1) * numerator / gcd);
-        this.denominator = BigInteger.valueOf(Math.abs(denominator) / gcd);
+    public Rational(BigInteger numerator, BigInteger denominator) {
+        BigInteger gcd = gcd(numerator, denominator);
+        r[0] = (denominator.compareTo(BigInteger.ZERO) > 0
+                ? BigInteger.ONE :
+                new BigInteger("-1")).multiply(numerator.divide(gcd));
+        r[1] = denominator.divide(gcd);
     }
 
-    private static long gcd(long numerator, long denominator) {
-        long n1 = Math.abs(numerator);
-        long n2 = Math.abs(denominator);
-        int gcd = 1;
-        for (int i = 1; i <= n1 && i <= n2; i++) {
-            if (n1 % i == 0 && n2 % i == 0) {
-                gcd = i;
-            }
+    private static BigInteger gcd(BigInteger numerator, BigInteger denominator) {
+        BigInteger n1 = numerator;
+        BigInteger n2 = denominator;
+        BigInteger gcd = BigInteger.ONE;
+
+        for (BigInteger k = BigInteger.ONE;
+             k.compareTo(n1) <= 0 && k.compareTo(n2) <= 0;
+             k = k.add(BigInteger.ONE)) {
+            if (n1.remainder(k).compareTo(BigInteger.ZERO) == 0 &&
+                    n2.remainder(k).compareTo(BigInteger.ZERO) == 0)
+                gcd = k;
         }
+
         return gcd;
     }
 
-    public long getNumerator() {
-        return numerator.longValue();
+    public BigInteger getNumerator() {
+        return r[0];
     }
 
-    public long getDenominator() {
-        return denominator.longValue();
+    public BigInteger getDenominator() {
+        return r[1];
     }
 
     public Rational add(Rational secondRational) {
-        long n = numerator.longValue() * secondRational.getDenominator() +
-                denominator.longValue() * secondRational.getNumerator();
-        long d = denominator.longValue() * secondRational.getDenominator();
+        BigInteger n = (r[0].multiply(secondRational.getDenominator())).add(
+                r[1].multiply(secondRational.getNumerator()));
+        BigInteger d = r[1].multiply(secondRational.getDenominator());
         return new Rational(n, d);
     }
 
     public Rational subtract(Rational secondRational) {
-        long n = numerator.longValue() * secondRational.getDenominator()
-                - denominator.longValue() * secondRational.getNumerator();
-        long d = denominator.longValue() * secondRational.getDenominator();
+        BigInteger n = (r[0].multiply(secondRational.getDenominator())).subtract(
+                r[1].multiply(secondRational.getNumerator()));
+        BigInteger d = r[1].multiply(secondRational.getDenominator());
         return new Rational(n, d);
     }
 
     public Rational multiply(Rational secondRational) {
-        long n = numerator.longValue() * secondRational.getNumerator();
-        long d = denominator.longValue() * secondRational.getDenominator();
+        BigInteger n = r[0].multiply(secondRational.getNumerator());
+        BigInteger d = r[1].multiply(secondRational.getDenominator());
         return new Rational(n, d);
     }
 
     public Rational divide(Rational secondRational) {
-        long n = numerator.longValue() * secondRational.getDenominator();
-        long d = denominator.longValue() * secondRational.getNumerator();
+        BigInteger n = r[0].multiply(secondRational.getDenominator());
+        BigInteger d = r[1].multiply(secondRational.getNumerator());
         return new Rational(n, d);
     }
 
     @Override
     public String toString() {
-        if (denominator.longValue() == 1)
-            return numerator + "";
+        if (r[1].compareTo(BigInteger.ONE) == 0)
+            return r[0] + "";
         else
-            return numerator + "/" + denominator;
+            return r[0] + "/" + r[1];
     }
 
     public boolean equals(Object other) {
-        if ((this.subtract((Rational) (other))).getNumerator() == 0)
+        if (((this.subtract((Rational) (other))).getNumerator()).compareTo(
+                BigInteger.ZERO) == 0)
             return true;
         else
             return false;
@@ -79,9 +85,11 @@ public class Rational extends Number implements Comparable<Rational>{
 
     @Override
     public int compareTo(Rational o) {
-        if (this.subtract(o).getNumerator() > 0)
+        BigInteger zero = BigInteger.ZERO;
+        BigInteger n = this.subtract((Rational) o).getNumerator();
+        if (n.compareTo(zero) > 0)
             return 1;
-        else if (this.subtract(o).getNumerator() < 0)
+        else if (n.compareTo(zero) < 0)
             return -1;
         else
             return 0;
@@ -104,7 +112,8 @@ public class Rational extends Number implements Comparable<Rational>{
 
     @Override
     public double doubleValue() {
-        return numerator.longValue() * 1.0 / denominator.longValue();
+        return this.getNumerator().doubleValue() /
+                this.getDenominator().doubleValue();
     }
 }
 

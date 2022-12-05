@@ -1,10 +1,12 @@
 package chapters.chapter13.exercises.exercise13_15;
 
 
+import java.math.BigInteger;
+
 public class Test {
     public static void main(String[] args) {
-        Rational r = new Rational(5,2);
-        Rational r1 = new Rational(9,5);
+        Rational r = new Rational(new BigInteger("5"),new BigInteger("2"));
+        Rational r1 = new Rational(new BigInteger("9"),new BigInteger("5"));
         System.out.println(r);
         System.out.println(r1);
         System.out.println(r.add(r1));
